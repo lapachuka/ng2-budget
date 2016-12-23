@@ -4,6 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AuthModule } from './auth/index';
+import { DashboardModule } from './dashboard/index';
+
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -11,8 +15,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot([], {useHash: false}),
     FormsModule,
-    HttpModule
+    HttpModule,
+    AuthModule,
+    DashboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
