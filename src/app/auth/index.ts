@@ -6,6 +6,7 @@ import {AuthGuard} from './_guards/auth.guard';
 import {AuthService} from './services/auth-service';
 import {LoginComponent} from "./components/login/login.component";
 import {HttpModule} from '@angular/http';
+import {HttpClient} from './services/http.client';
 
 
 const routes:Routes = [
@@ -24,6 +25,7 @@ const routes:Routes = [
     RouterModule.forChild(routes)
   ],
   providers: [
+    HttpClient,
     AuthGuard,
     AuthService
   ]
