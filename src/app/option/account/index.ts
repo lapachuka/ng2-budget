@@ -8,7 +8,7 @@ const routes:Routes = [
   {
     path: 'option/account',
     component: AccountComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   }
 ];
 

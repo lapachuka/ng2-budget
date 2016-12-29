@@ -7,10 +7,11 @@ import {AuthService} from './services/auth-service';
 import {LoginComponent} from "./components/login/login.component";
 import {HttpModule} from '@angular/http';
 import {HttpClient} from './services/http.client';
+import {RestrictedGuard} from './_guards/index'
 
 
 const routes:Routes = [
-  {path: '', component: LoginComponent}
+  {path: '', component: LoginComponent, canActivate: [RestrictedGuard]}
 ];
 
 
@@ -27,6 +28,7 @@ const routes:Routes = [
   providers: [
     HttpClient,
     AuthGuard,
+    RestrictedGuard,
     AuthService
   ]
 })

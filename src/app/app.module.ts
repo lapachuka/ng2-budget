@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { AuthModule } from './auth/index';
 import { DashboardModule } from './dashboard/index';
 import { OptionModule } from './option/index';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {RouterModule} from '@angular/router';
 
@@ -20,6 +21,7 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     HttpModule,
     AuthModule,
+    NgbModule.forRoot(),
     DashboardModule,
     OptionModule
   ],
