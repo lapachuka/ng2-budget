@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
   }
 
   canActivate() {
-    console.log('can acrive loading');
+    console.log('can active loading');
 
     if (!this.auth.authenticated) {
       this.router.navigate(['/']);

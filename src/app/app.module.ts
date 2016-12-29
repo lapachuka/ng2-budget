@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/index';
 import { DashboardModule } from './dashboard/index';
+import { OptionModule } from './option/index';
 
 import {RouterModule} from '@angular/router';
 
@@ -19,7 +20,8 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     HttpModule,
     AuthModule,
-    DashboardModule
+    DashboardModule,
+    OptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
