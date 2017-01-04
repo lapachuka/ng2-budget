@@ -3,8 +3,9 @@ import {NgModule} from "@angular/core"
 import {CommonModule} from "@angular/common"
 import {AccountComponent} from "./component/account.component";
 import {AuthGuard} from "../../auth/_guards"
+import {AccountService} from './services/account.service';
 
-const routes:Routes = [
+const routes: Routes = [
   {
     path: 'option/account',
     component: AccountComponent,
@@ -20,7 +21,12 @@ const routes:Routes = [
     CommonModule,
     RouterModule.forRoot(routes)
   ],
-  providers: []
+  providers: [
+    AccountService
+  ]
 })
 
-export class AccountModule{}
+export class AccountModule {
+  constructor() {
+  }
+}
