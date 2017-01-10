@@ -1,1 +1,18 @@
 <h3>Account</h3>
+<form  (submit)="createAccount()" novalidate>
+  <div class="form-group">
+    <input type="text" ngModel="" name="accountName" placeholder="Name">
+    <select class="form-control">
+      <option *ngFor="let currency of currencies">
+        {{currency.name}} ({{currency.country}})
+      </option>
+    </select>
+  </div>
+</form>
+<div>
+  <ul>
+    <li *ngFor="let account of accounts">
+      {{account.name}}-{{account.currency_name}}
+    </li>
+  </ul>
+</div>

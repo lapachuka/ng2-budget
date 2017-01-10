@@ -11,9 +11,17 @@ export class AccountService {
   }
 
   private accountUrl:string = 'http://localhost:8742/accounts';
+  private currencyUrl:string = 'http://localhost:8742/currency';
 
   getList():Observable<any> {
     return this.http.get(this.accountUrl)
+      .map((res:Response) => res.json())
+      .map(res => res)
+      .catch((error:any) => Observable.throw(error.json() || 'Server error'));
+  }
+
+  getCurrencyList():Observable<any> {
+    return this.http.get(this.currencyUrl)
       .map((res:Response) => res.json())
       .map(res => res)
       .catch((error:any) => Observable.throw(error.json() || 'Server error'));
