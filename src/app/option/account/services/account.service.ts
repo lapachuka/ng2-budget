@@ -26,4 +26,18 @@ export class AccountService {
       .map(res => res)
       .catch((error:any) => Observable.throw(error.json() || 'Server error'));
   }
+
+  createNewAccount(data:Object):Observable<any> {
+    return this.http.post(this.accountUrl, data)
+      .map((res:Response) => res.json())
+      .map(res => res)
+      .catch((error:any) => Observable.throw(error.json() || 'Server error'));
+  }
+
+  removeAccountById(id: number):Observable<any> {
+    return this.http.delete(`${this.accountUrl}/${id}`)
+      .map((res:Response) => res.json())
+      .map(res => res)
+      .catch((error:any) => Observable.throw(error.json() || 'Server error'));
+  }
 }

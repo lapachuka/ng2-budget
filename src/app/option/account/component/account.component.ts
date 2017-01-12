@@ -1,7 +1,8 @@
 import {Component} from "@angular/core";
 import {AccountService} from '../services/account.service';
 import {Router} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {Account} from './account.model';
+import {Currency} from './currency.model';
 
 @Component({
   templateUrl: './account.html',
@@ -9,38 +10,64 @@ import {FormsModule} from '@angular/forms';
 })
 
 export class AccountComponent {
-  errorMsg:String = '';
+  errorMsg: String = '';
   accounts = [];
-  currencies = [];
+  currencies: Currency[] = [];
+  newAccount: Account = {
+    name: '',
+    currency_id: 0
+  };
 
-  constructor(private account:AccountService, private router:Router) {
+  private errorHandler(err: any): void {
+    this.errorMsg = err.message;
+    console.log(err);
+  }
+
+  private addNewAccount(form): void {
+    const name = this.newAccount.name;
+    const currentCurrency = this.currencies.find(el => el.id === Number(this.newAccount.currency_id));
+    const currency_name = currentCurrency.name;
+    const createdAccount = {
+      name,
+      currency_name
+    };
+
+    form.reset();
+    this.accounts.unshift(createdAccount);
+  }
+
+  private removeAccountFromList(id: number): void {
+    this.accounts = this.accounts.filter(el => el.id !== id)
+  }
+
+  constructor(private account: AccountService, private router: Router) {
     this.account.getList()
       .subscribe(
-        (resp) => {
-          console.log(resp);
-          this.accounts = resp.data
-        },
-        err => {
-          // Log errors if any
-          this.errorMsg = err.message;
-          console.log(err);
-        });
+        resp => this.accounts = resp.data,
+        err => this.errorHandler
+      );
 
     this.account.getCurrencyList()
       .subscribe(
-        (resp) => {
-          console.log(resp);
-          this.currencies = resp.data
-        },
-        err => {
-          // Log errors if any
-          this.errorMsg = err.message;
-          console.log(err);
-        });
+        resp => this.currencies = resp.data,
+        err => this.errorHandler
+      );
   }
 
-  createAccount(accountModel: FormsModule) {
-    console.log('fire create account event');
-    console.log(accountModel);
+  createAccount(form) {
+    this.account.createNewAccount(this.newAccount)
+      .subscribe(
+        resp => this.addNewAccount(form),
+        err => this.errorHandler
+      );
+  }
+
+  removeAccount(id: number) {
+    console.log('delete click')
+    this.account.removeAccountById(id)
+      .subscribe(
+        resp => this.removeAccountFromList(id),
+        err => this.errorHandler
+      );
   }
 }

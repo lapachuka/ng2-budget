@@ -1,5 +1,6 @@
 import {Routes, RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core"
+import {FormsModule} from '@angular/forms';
 import {CommonModule} from "@angular/common"
 import {AccountComponent} from "./component/account.component";
 import {AuthGuard} from "../../auth/_guards"
@@ -19,6 +20,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
