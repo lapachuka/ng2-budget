@@ -34,6 +34,13 @@ export class AccountService {
       .catch((error:any) => Observable.throw(error.json() || 'Server error'));
   }
 
+  updateAccount(id: number, data:Object):Observable<any> {
+    return this.http.put(`${this.accountUrl}/${id}`, data)
+      .map((res:Response) => res.json())
+      .map(res => res)
+      .catch((error:any) => Observable.throw(error.json() || 'Server error'));
+  }
+
   removeAccountById(id: number):Observable<any> {
     return this.http.delete(`${this.accountUrl}/${id}`)
       .map((res:Response) => res.json())

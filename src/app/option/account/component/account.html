@@ -1,25 +1,41 @@
 <h3>Account</h3>
-<form  (submit)="createAccount(accountForm)" #accountForm="ngForm" novalidate>
+<form #accountForm="ngForm" novalidate>
   <div class="form-group">
     <input type="text" class="form-control" id="name" name="name" placeholder="Account Name"
-           [(ngModel)]="newAccount.name">
+           [(ngModel)]="currentAccount.name">
   </div>
   <div class="form-group">
-    <select class="form-control" [(ngModel)]="newAccount.currency_id" name="currency_id">
+    <select class="form-control" [(ngModel)]="currentAccount.currency_id" name="currency_id">
       <option value="0" disabled selected>Select currency</option>
       <option *ngFor="let currency of currencies" value={{currency.id}}>
         {{currency.name}} ({{currency.country}})
       </option>
     </select>
   </div>
-  <button type="submit" class="btn btn-primary" [disabled]="!newAccount.name || !newAccount.currency_id">Add account</button>
+  <button type="submit" class="btn btn-primary"
+          *ngIf="!currentAccount.id"
+          (click)="createAccount(accountForm)"
+          [disabled]="!currentAccount.name || !currentAccount.currency_id">Add account
+  </button>
+  <button type="button" class="btn btn-primary"
+          *ngIf="currentAccount.id"
+          (click)="updateAccount(accountForm)">Save changes
+  </button>
+  <button type="button" class="btn btn-primary"
+          *ngIf="currentAccount.id"
+          (click)="cancelEditing(accountForm)">Cancel
+  </button>
 </form>
 <div>
   <ul>
     <li *ngFor="let account of accounts">
       {{account.name}}-{{account.currency_name}}
-      <button type="button"  aria-label="delete" (click)="removeAccount(account.id)"><i class="fa fa-trash" aria-hidden="true"></i></button>
-      <button type="button"  aria-label="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+      <button type="button" aria-label="delete" (click)="removeAccount(account.id)">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      <button type="button" aria-label="edit" (click)="makeAccountEditable(account)">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </button>
     </li>
   </ul>
 </div>
