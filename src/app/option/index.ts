@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core"
 import {CommonModule} from "@angular/common"
 import {AccountModule} from "./account"
 import {ExpenseModule} from "./expense"
+import {IncomeModule} from "./income"
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import {ExpenseModule} from "./expense"
   imports: [
     CommonModule,
     AccountModule,
-    ExpenseModule
+    ExpenseModule,
+    IncomeModule
   ],
   providers: []
 })
