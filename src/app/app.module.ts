@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/index';
 import { DashboardModule } from './dashboard/index';
 import { OptionModule } from './option/index';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NotFoundModule } from './not-found/index';
 
 import {RouterModule} from '@angular/router';
 
@@ -23,7 +24,8 @@ import {RouterModule} from '@angular/router';
     AuthModule,
     NgbModule.forRoot(),
     DashboardModule,
-    OptionModule
+    OptionModule,
+    NotFoundModule
   ],
   providers: [],
   bootstrap: [AppComponent]
