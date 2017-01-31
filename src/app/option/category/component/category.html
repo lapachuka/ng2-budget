@@ -1,0 +1,52 @@
+<h3>{{categoryType | uppercase}}</h3>
+<form #categoryForm="ngForm" novalidate>
+  <div class="form-group">
+    <input type="text" class="form-control" name="name" placeholder="category"
+           [(ngModel)]="currentCategory.name">
+  </div>
+  <div class="form-group">
+    <select class="form-control" [(ngModel)]="currentCategory.parent_id" name="parent_id">
+      <option value="null" disabled selected>-</option>
+      <option *ngFor="let category of filteredCategories" value={{category.id}}>
+        {{category.name}}
+      </option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary"
+          *ngIf="!currentCategory.id"
+          (click)="createCategory()"
+          [disabled]="!currentCategory.name">Add {{categoryType}}
+  </button>
+  <button type="button" class="btn btn-primary"
+          *ngIf="currentCategory.id"
+          (click)="updateCategory()">Save changes
+  </button>
+  <button type="button" class="btn btn-primary"
+          *ngIf="currentCategory.id"
+          (click)="cancelEditing(categoryForm)">Cancel
+  </button>
+</form>
+<div>
+  <ul>
+    <li *ngFor="let category of categories">
+      {{category.name}}
+      <button type="button" aria-label="delete" (click)="removeCategory(category.id)">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      <button type="button" aria-label="edit" (click)="makeEditable(category)">
+        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      </button>
+      <ul *ngIf="category.sub_categories">
+        <li *ngFor="let subCategory of category.sub_categories">
+          {{subCategory.name}}
+          <button type="button" aria-label="delete" (click)="removeCategory(subCategory.id, category.id)">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </button>
+          <button type="button" aria-label="edit" (click)="makeEditable(subCategory, category)">
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          </button>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
