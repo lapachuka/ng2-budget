@@ -1,0 +1,28 @@
+<div class="login-page">
+  <div class="row">
+    <div class="col-lg-4 col-lg-offset-4">
+      <h1 class="title">budget.biz.ua</h1>
+      <form role="form" (ngSubmit)="onSubmit()" >
+        <div class="form-content">
+          <div class="form-group">
+            <input type="email"
+                   [(ngModel)]="login.email"
+                   name="email"
+                   class="form-control input-underline input-lg"
+                   placeholder="Email" >
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              class="form-control input-underline input-lg"
+              name="password"
+              id="" placeholder="Password"
+              [(ngModel)]="login.password">
+          </div>
+        </div>
+        <button type="submit" class="btn rounded-btn">Login</button>
+        <a type="submit" class="btn rounded-btn" routerLink="/signup">Register</a>
+      </form>
+    </div>
+  </div>
+</div>
