@@ -2,19 +2,21 @@ import {Routes, RouterModule} from "@angular/router";
 import {NgModule} from "@angular/core"
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from "@angular/common"
-import {ExpenseComponent} from "./component/expense.component";
-import {ExpenseService} from './services/expense.service';
+import {CategoryComponent} from "./component/category.component";
+import {AuthGuard} from "../../auth/_guards"
+import {CategoryService} from './services/category.service';
 
 const routes: Routes = [
   {
-    path: 'option/expense',
-    component: ExpenseComponent
+    path: 'option/categories/:type',
+    component: CategoryComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
   declarations: [
-    ExpenseComponent
+    CategoryComponent
   ],
   imports: [
     CommonModule,
@@ -22,11 +24,11 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    ExpenseService
+    CategoryService
   ]
 })
 
-export class ExpenseModule {
+export class CategoryModule {
   constructor() {
   }
 }
