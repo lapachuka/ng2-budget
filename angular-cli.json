@@ -19,7 +19,7 @@
       "mobile": false,
       "styles": [
         "styles.css",
-        "assets/styles/main.scss"
+        "assets/sass/app.scss"
       ],
       "scripts": [
       ],
