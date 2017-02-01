@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import {Response} from '@angular/http';
-import {HttpClient} from "../../../auth/services/http.client";
+import {HttpClient} from "../../../../shared/services/http.client";
 
 @Injectable()
 export class CategoryService {

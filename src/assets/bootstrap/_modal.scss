@@ -104,7 +104,7 @@
 
   // Properly space out buttons
   .btn + .btn {
-    margin-bottom: 0; // account for input[type="submit"] which gets the bottom margin like all other inputs
+    margin-bottom: 0; // profile for input[type="submit"] which gets the bottom margin like all other inputs
     margin-left: 5px;
   }
   // but override that for button groups

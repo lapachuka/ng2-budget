@@ -6,8 +6,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppComponent} from './app.component';
 import {RouterModule} from '@angular/router';
 import {DashboardModule} from "./components/dashboard/index";
-import {OptionModule} from "./components/option/index";
-import {AccountModule} from "./components/account/account.module";
+import {CategoryModule} from "./components/option/category";
+import {ProfileModule} from "./components/profile/index";
+import {AccountModule} from "./components/option/account";
 import {HttpClient} from "./shared/services/http.client";
 import {appRoutes} from "./app.routes";
 import {ZonesModule} from "./zones/zones.module";
@@ -24,8 +25,9 @@ import {ZonesModule} from "./zones/zones.module";
     ZonesModule,
     NgbModule.forRoot(),
     DashboardModule,
-    OptionModule,
-    AccountModule
+    CategoryModule,
+    AccountModule,
+    ProfileModule
   ],
   providers: [
     HttpClient

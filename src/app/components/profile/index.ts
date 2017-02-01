@@ -17,5 +17,5 @@ import {CommonModule} from "@angular/common";
   ]
 })
 
-export class AccountModule {
+export class ProfileModule {
 }
