@@ -5,24 +5,10 @@ import {AuthService} from "../../components/profile/auth.service";
 
 @Injectable()
 export class AuthZoneActivateService implements CanActivate {
-  constructor(private auth: AuthService, private  router: Router) {
+  constructor(private auth: AuthService) {
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    let isAuthorized: Observable<boolean>;
-
-    isAuthorized = new Observable((observer) => {
-      this.auth.isAuth().subscribe((auth) => {
-        console.log('auth-zone:',auth);
-        if (auth) {
-          console.log('redirect to dashboard');
-          this.router.navigate(['dashboard'])
-        }
-        observer.next(!auth);
-      })
-    });
-
-
-    return isAuthorized;
+    return this.auth.isAuthNot();
   }
 }

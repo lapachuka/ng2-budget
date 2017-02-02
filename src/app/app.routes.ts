@@ -10,7 +10,7 @@ import {CategoryComponent} from "./components/option/category/component/category
 import {AccountComponent} from "./components/option/account/component/account.component";
 
 export const appRoutes: Routes = [
-  {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {
     path: '',
     component: AuthZoneComponent,
@@ -29,5 +29,5 @@ export const appRoutes: Routes = [
       {path: 'option/account', component: AccountComponent}
     ]
   },
-  {path: '**', redirectTo: '/dashboard'},
+  {path: '**', redirectTo: 'dashboard'},
 ];

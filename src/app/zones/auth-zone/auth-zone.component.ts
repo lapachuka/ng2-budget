@@ -1,4 +1,6 @@
 import {Component} from "@angular/core";
+import {AuthService} from "../../components/profile/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'auth-zone',
@@ -6,4 +8,19 @@ import {Component} from "@angular/core";
 })
 
 export class AuthZoneComponent {
+  subscriber:any;
+
+  constructor(private auth: AuthService, private  router: Router) {
+
+    this.subscriber = this.auth.isAuth().subscribe((auth) => {
+      if (auth) {
+        this.router.navigate(['dashboard'])
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscriber.unsubscribe();
+  }
+
 }
