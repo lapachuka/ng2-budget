@@ -1,1 +1,22 @@
-Dashboard
+<h2 class="text-muted page-title">
+  Account list
+</h2>
+<div class="row dashboard">
+  <div class="col-xl-4 col-lg-6" *ngFor="let account of accounts">
+    <div class="card card-success card-inverse">
+      <div class="card-header card-success">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="huge account-text">
+              {{account.name}}:
+                <span class="account-amount">
+                      {{account.amount}} <span class="currency">{{account.currency_name}}</span>
+                </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer card-green"></div>
+    </div>
+  </div>
+</div>
