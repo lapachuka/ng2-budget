@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from "./components/profile/auth.service";
 
@@ -10,12 +10,13 @@ import {AuthService} from "./components/profile/auth.service";
 export class AppComponent {
   title = 'app works!';
 
-  constructor(private auth: AuthService, private router: Router){
+  constructor(private auth: AuthService, private router: Router) {
+    console.log('app works');
     this.auth = auth;
     this.router = router;
   }
 
-  logout(){
+  logout() {
     this.auth.signOut();
     this.router.navigate([''])
   }

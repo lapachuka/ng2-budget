@@ -34,5 +34,6 @@ import {ZonesModule} from "./zones/zones.module";
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
 }

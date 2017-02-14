@@ -13,6 +13,7 @@ export class AuthZoneComponent {
   constructor(private auth: AuthService, private  router: Router) {
 
     this.subscriber = this.auth.isAuth().subscribe((auth) => {
+      console.log('auth-zone:', auth);
       if (auth) {
         this.router.navigate(['dashboard'])
       }

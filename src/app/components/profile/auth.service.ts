@@ -16,6 +16,8 @@ export class AuthService {
 
     this.authFree = new BehaviorSubject(!this.loginIn);
     this.authRestricted = new BehaviorSubject(!!this.loginIn);
+
+    this.nextAuth(this.loginIn);
   }
 
   private commentsUrl = 'http://localhost:8742/user/login';
