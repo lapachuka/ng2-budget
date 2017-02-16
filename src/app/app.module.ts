@@ -12,6 +12,7 @@ import {AccountModule} from "./components/option/account";
 import {HttpClient} from "./shared/services/http.client";
 import {appRoutes} from "./app.routes";
 import {ZonesModule} from "./zones/zones.module";
+import {TransactionModule} from "./components/transaction/transaction.module";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {ZonesModule} from "./zones/zones.module";
     DashboardModule,
     CategoryModule,
     AccountModule,
+    TransactionModule,
     ProfileModule
   ],
   providers: [

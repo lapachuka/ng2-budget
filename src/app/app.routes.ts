@@ -8,6 +8,7 @@ import {InternalZoneActivateService} from "./zones/internal-zone/itnernal-zone.a
 import {AuthZoneActivateService} from "./zones/auth-zone/auth-zone.activate";
 import {CategoryComponent} from "./components/option/category/component/category.component";
 import {AccountComponent} from "./components/option/account/component/account.component";
+import {TransactionComponent} from "./components/transaction/transaction.component";
 
 export const appRoutes: Routes = [
   {path: '', redirectTo: 'sign-in', pathMatch: 'full'},
@@ -26,7 +27,8 @@ export const appRoutes: Routes = [
     children: [
       {path: 'dashboard', component: DashboardComponent},
       {path: 'option/categories/:type', component: CategoryComponent},
-      {path: 'option/account', component: AccountComponent}
+      {path: 'option/account', component: AccountComponent},
+      {path: 'transaction/:type', component: TransactionComponent}
     ]
   },
   {path: '**', redirectTo: 'sign-in'},

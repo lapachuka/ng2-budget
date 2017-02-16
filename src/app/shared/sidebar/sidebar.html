@@ -3,21 +3,24 @@
 </button>
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
   <ul class="list-group">
-    <a routerLink="/dashboard/home" [routerLinkActive]="['router-link-active']" class="list-group-item">
+    <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
       <i class="fa fa-fw fa-dashboard"></i> Dashboard
     </a>
 
     <div class="nested-menu">
-      <a class="list-group-item" (click)="addExpandClass('pages')">
+      <a class="list-group-item" (click)="addExpandClass('pages')"  [routerLinkActive]="['router-link-active']">
         <span><i class="fa fa-plus"></i> &nbsp; Transactions</span>
       </a>
       <li class="nested" [ngClass]="{'expand' : showMenu === 'pages' }">
         <ul class="submenu">
           <li>
-            <a href><span>Income</span></a>
+            <a routerLink="/transaction/all"><span>All</span></a>
           </li>
           <li>
-            <a href><span>Expenses</span></a>
+            <a routerLink="/transaction/expenses"><span>Expenses</span></a>
+          </li>
+          <li>
+            <a routerLink="/transaction/income"><span>Income</span></a>
           </li>
         </ul>
       </li>
