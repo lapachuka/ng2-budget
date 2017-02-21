@@ -13,6 +13,10 @@ import {HttpClient} from "./shared/services/http.client";
 import {appRoutes} from "./app.routes";
 import {ZonesModule} from "./zones/zones.module";
 import {TransactionModule} from "./components/transaction/transaction.module";
+import {MaterialModule} from "@angular/material";
+import 'hammerjs';
+import {TopNavModule} from "./shared/topnav/index";
+
 
 @NgModule({
   declarations: [
@@ -23,12 +27,14 @@ import {TransactionModule} from "./components/transaction/transaction.module";
     RouterModule.forRoot(appRoutes),
     FormsModule,
     HttpModule,
+    MaterialModule,
     ZonesModule,
     NgbModule.forRoot(),
     DashboardModule,
     CategoryModule,
     AccountModule,
     TransactionModule,
+    TopNavModule,
     ProfileModule
   ],
   providers: [

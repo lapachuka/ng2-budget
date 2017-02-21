@@ -1,0 +1,27 @@
+.auth-block {
+  display: block;
+  width: 70%;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #fff;
+
+  form {
+
+    display: block;
+
+    md-input-container,
+    button{
+      width: 100%;
+    }
+    a{
+      width: 100%;
+    }
+
+  }
+
+  @include screen-gt(sm) {
+    width: 250px;
+  }
+}
+
+

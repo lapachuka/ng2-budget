@@ -1,6 +1,8 @@
 import {Component} from "@angular/core";
 import {TransactionService} from "./transaction.service";
 import {ActivatedRoute, Params} from "@angular/router";
+import {MdDialog} from "@angular/material";
+import {TransactionDetailsComponent} from "./details/transaction.details.component";
 
 @Component({
   templateUrl: './transaction-list.html'
@@ -9,7 +11,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 export class TransactionComponent {
   transactions;
 
-  constructor(private Transaction: TransactionService, private activatedRoute: ActivatedRoute) {
+  constructor(private Transaction: TransactionService, private activatedRoute: ActivatedRoute, private dialog: MdDialog) {
 
   }
 
@@ -25,6 +27,14 @@ export class TransactionComponent {
         .subscribe((resp) => {
           this.transactions = resp.data;
         })
+    });
+  }
+
+  showDetails(name){
+    let dialogRef = this.dialog.open(TransactionDetailsComponent);
+    dialogRef.componentInstance.name = name;
+    dialogRef.afterClosed().subscribe((name) => {
+      console.log(name)
     });
   }
 

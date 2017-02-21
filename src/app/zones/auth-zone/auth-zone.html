@@ -1,4 +1,9 @@
-<div class="login-form">
-  <router-outlet></router-outlet>
+<div class="site site_state_auth">
+  <div class="site__content">
+    <a class="site-logo">
+      <span>Budget {{isLoading}}</span>
+    </a>
+    <router-outlet></router-outlet>
+  </div>
 </div>
-auth zone
+

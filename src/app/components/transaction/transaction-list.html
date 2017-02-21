@@ -1,34 +1,18 @@
-<div class="wrapper wrapper-content">
-  <div class="ibox">
-    <div class="inbox-content">
+<div class="transaction-group">
 
-      <div class="row transaction">
-        <div class="col-md-12">
-          <h2 class="text-muted page-title">
-            Transaction list
-          </h2>
-          <div class="table-responsive">
+  <h2 class="text-muted page-title">
+    Transaction list
+  </h2>
 
-            <table class="table table-hover">
-              <tr>
-                <th>Date</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Description</th>
-              </tr>
-              <tr *ngFor="let transaction of transactions"
-                  [ngClass]="{'warning': transaction.type === 'expenses', 'success': transaction.type === 'income'}">
-                <td> {{transaction.date |date:'d MMM y'}}</td>
-                <td> {{transaction.category_name}}</td>
-                <td> {{transaction.amount}} {{transaction.currency_name}}</td>
-                <td> {{transaction.description}}</td>
-              </tr>
 
-            </table>
-          </div>
+  <md-card *ngFor="let transaction of transactions" class="transaction-item">
+   <!-- <h3 md-line>{{transaction.date |date:'d MMM y'}} </h3>-->
+    <p md-line>
+      <span>{{transaction.category_name}} </span>
+      <span> {{transaction.amount}} </span>
+      <span class="demo-2"> -- {{transaction.currency_name}} </span>
+      <span>{{transaction.description}}</span>
+    </p>
 
-        </div>
-      </div>
-    </div>
-  </div>
+  </md-card>
 </div>

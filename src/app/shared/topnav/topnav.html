@@ -1,13 +1,50 @@
-<nav class="navbar navbar-dark bg-inverse navbar-fixed-top topnav">
-    <div class="collapse navbar-toggleable-xs clearfix text-center">
-        <a class="navbar-brand" [routerLink]="['/dashboard','/home']">budget.biz.ua</a>
-        <ul class="nav navbar-nav top-nav navbar-right pull-xs-right top-right-nav">
+<div class="site__header site-header">
+  <div class="container">
+    <div class="site-header-layout">
+      <div class="site-header-layout__logo">
+        <a class="site-logo" href="/#/">
+          <span>Budget</span>
+        </a>
+      </div>
 
-            <li class="nav-item">
-                <a id="single-button" class="nav-link" (click)="logout()">
-                    <i class="fa fa-user"></i> Log Out
-                </a>
-            </li>
-        </ul>
+
+      <div class="site-header-layout__fit"></div>
+
+      <div class="site-header-layout__user">
+        <a class="site-header__logout" (click)="logout()">
+          <md-icon class="material-icons material-icons_user">exit_to_app</md-icon>
+        </a>
+      </div>
+
+      <div class="site-header-layout__nav-toggle">
+        <md-menu #appMenu="mdMenu">
+          <button md-menu-item> Add income </button>
+          <button md-menu-item> Add exchange </button>
+          <button md-menu-item> Exchange </button>
+        </md-menu>
+
+        <button md-icon-button [mdMenuTriggerFor]="appMenu">
+          <md-icon>add</md-icon>
+        </button>
+      </div>
+
+      <div class="site-header-layout__nav">
+        <div class="site-nav">
+          <div class="site-nav__list">
+            <a
+              class="site-nav__item"
+              routerLink="/dashboard"
+              [routerLinkActive]="['site-nav__item_state_active']"
+            >Dashboard</a>
+            <a
+              class="site-nav__item"
+              routerLink="/transaction/all"
+              [routerLinkActive]="['site-nav__item_state_active']"
+            >Transaction</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-</nav>
+  </div>
+</div>
