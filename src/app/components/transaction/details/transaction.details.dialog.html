@@ -1,9 +1,37 @@
-<div class="dialog">
-  <h2 md-dialog-title>Transaction detail</h2>
-  <div md-dialog-content>
-    <p>Hello world<span class="board-name">{{name}}</span>?</p>
+<div class="transaction-dialog">
+  <h2 md-dialog-title class="dialog-title">Transaction detail</h2>
+  <div md-dialog-content class="dialog-body">
+
+      <div class="dialog-row">
+        <md-select placeholder="Category" [(ngModel)]="transaction.category_id" name="category">
+          <md-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</md-option>
+        </md-select>
+
+        <my-date-picker [options]="myDatePickerOptions"
+                        [(ngModel)]="transaction.curDate"
+                        (dateChanged)="onDateChanged($event)"></my-date-picker>
+      </div>
+
+      <div class="dialog-row">
+        <md-input-container flex-gt-xs="100">
+          <input type="number" mdInput name='account' placeholder="Amount" [(ngModel)]="transaction.amount">
+        </md-input-container>
+
+        <md-select placeholder="Account" [(ngModel)]="transaction.account_id" name="account">
+          <md-option *ngFor="let account of accounts" [value]="account.id">
+            {{account.name}} - {{account.currency_name}}
+          </md-option>
+        </md-select>
+      </div>
+
+      <md-input-container>
+        <input type="text" name="description" mdInput placeholder="Description" [(ngModel)]="transaction.description">
+      </md-input-container>
   </div>
-  <div md-dialog-actions align="right">
-    <button md-raised-button color="seccess" (click)="ok()">Ok</button>
+  <div md-dialog-actions align="right" class="footer-buttons">
+    <button md-raised-button color="'red'" (click)="cancel()">Cancel</button>
+    <button md-raised-button color="'blue'" (click)="update()" *ngIf="mode === 'update'">Update</button>
+    <button md-raised-button color="'blue'" (click)="ok()" *ngIf="mode === 'create'">Ok</button>
+    <button md-raised-button color="'green'" (click)="addMore()" *ngIf="mode === 'create'">Add</button>
   </div>
 </div>

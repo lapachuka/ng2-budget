@@ -1,0 +1,71 @@
+.transaction-dialog {
+  display: flex;
+  flex-direction: column;
+  min-height: 360px;
+  justify-content: space-between;
+
+  h2 {
+    flex: 1;
+  }
+
+  .dialog-body {
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .footer-buttons {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .dialog-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    md-input-container {
+      flex: 1;
+    }
+
+    md-select {
+      flex: 1;
+    }
+
+    my-date-picker {
+      flex: 1;
+    }
+
+    md-select {
+      flex: 1;
+    }
+  }
+
+  md-input-container {
+    width: 100%;
+  }
+
+  md-select {
+    padding-top: 9px;
+    margin: 0 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .transaction-dialog{
+    min-height: 60vh;
+
+    .dialog-body {
+      flex: 8;
+    }
+
+
+    .dialog-row {
+      flex: 2;
+      flex-direction: column;
+    }
+  }
+}
